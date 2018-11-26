@@ -1,0 +1,32 @@
+.todoWrapper{
+	padding: 15px 25px;
+	font-size: 25px;
+	opacity: 0.7;
+	border-top: 1px solid #ECECEC;
+}
+
+.todoInput{
+	border: none;
+	padding: 15px 25px;
+	font-size: 25px;
+}
+
+.removeTodo{
+	border: none;
+	background: transparent;
+	display: none;
+	float: right;
+	font-size: 20px;
+	margin-top: 13px;
+	opacity: 0.8;
+}
+
+.todoWrapper:hover .removeTodo{
+	display: inline-block;
+}
+
+
+.completed{
+	opacity: 0.4;
+	text-decoration: line-through;
+}

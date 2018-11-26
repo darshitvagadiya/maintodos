@@ -1,0 +1,49 @@
+.footer {
+	color: #777;
+	padding: 10px 15px;
+	height: 20px;
+	text-align: center;
+	border-top: 1px solid #e6e6e6;
+	display: flex;
+	justify-content: space-between;
+}
+
+.filters{
+	display: flex;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.filters li {
+	margin: 0 2px;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+
+.filters li a{
+	color: inherit;
+	cursor: pointer;
+}
+
+.filters li a:hover {
+	border-color: rgba(175, 47, 47, 0.1);
+	text-decoration: underline;
+}
+
+.filters li a.selected {
+	border-color: rgba(175, 47, 47, 0.2);
+}
+
+.clear-completed,
+html .clear-completed:active {
+	border: none;
+	background: transparent;
+	font-size: inherit;
+	color: inherit;
+	cursor: pointer;
+}
+
+.clear-completed:hover {
+	text-decoration: underline;
+}

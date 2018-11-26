@@ -1,0 +1,10 @@
+<div class="todoWrapper">
+	<form (ngSubmit)="updateTodo()">
+		<input type="checkbox" (click)="toggleCompleted()" [checked]="todo.completed">
+			<input type="text" class="todoInput" [class.completed]="todo.completed" [readonly]="isReadOnly" (dblclick)="toggleEdit()" name="updatedTodo" [(ngModel)]="todo.text">
+		<div class="removeTodo" (click)="removeTodo()">
+			<i class="fas fa-times"></i>
+		</div>
+	</form>
+</div>
+

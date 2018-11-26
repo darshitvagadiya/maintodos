@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 20px;
+	background-color: #EBEBEB;
+	color: #000000;
+}
+
+a{
+	text-decoration: none;
+	color: #000000;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

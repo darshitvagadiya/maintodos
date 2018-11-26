@@ -1,0 +1,5 @@
+<div class="todo-input-wrapper">
+	<form  (ngSubmit)="addTodo()">
+		<input id="todo-input" name="todo-input" type="text" [(ngModel)]="todoText" value="{{todoText}}" placeholder="What should be done?">
+	</form>
+</div>

@@ -1,0 +1,19 @@
+.todo-input-wrapper{
+	padding: 25px; 
+}
+
+#todo-input{
+	min-height: 35px;
+	outline: none;
+	border: none;
+	font-size: 25px;
+	opacity: 0.8;
+}
+
+input::placeholder{
+	opacity: 0.3;
+}
+
+#todo-input:focus{
+	font-size: 25px;
+}
