@@ -281,7 +281,7 @@ module.exports = ".footer {\r\n\tcolor: #777;\r\n\tpadding: 10px 15px;\r\n\theig
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\r\n\t<span class=\"todo-count\"><strong>{{allTodos.length}}</strong> item left</span>\r\n\t<!-- <ul class=\"filters\">\r\n\t\t<li>\r\n\t\t\t<a [routerLink]=\"['/all']\" [class.selected]=\"path === 'all'\">All</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a  [routerLink]=\"['/active']\" [class.selected]=\"path === 'active'\">Active</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a [routerLink]=\"['/completed']\" [class.selected]=\"path === 'completed'\">Completed</a>\r\n\t\t</li>\r\n\t</ul> -->\r\n\t<button class=\"clear-completed\" (click)=\"clearCompleted()\">Clear completed</button> \r\n</footer>"
+module.exports = "<footer class=\"footer\">\r\n\t<span class=\"todo-count\"><strong>{{getLength()}}</strong> item left</span>\r\n\t<!-- <ul class=\"filters\">\r\n\t\t<li>\r\n\t\t\t<a [routerLink]=\"['/all']\" [class.selected]=\"path === 'all'\">All</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a  [routerLink]=\"['/active']\" [class.selected]=\"path === 'active'\">Active</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a [routerLink]=\"['/completed']\" [class.selected]=\"path === 'completed'\">Completed</a>\r\n\t\t</li>\r\n\t</ul> -->\r\n\t<button class=\"clear-completed\" (click)=\"clearCompleted()\">Clear completed</button> \r\n</footer>"
 
 /***/ }),
 
@@ -309,12 +309,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var TodoFooterComponent = /** @class */ (function () {
-    // private activeTasks : number = this.allTodos.length;
     function TodoFooterComponent(todoService) {
         this.todoService = todoService;
     }
     TodoFooterComponent.prototype.getLength = function () {
-        this.todoService.lengthTodos();
+        return this.allTodos.filter(function (todo) { return !todo.completed; }).length;
     };
     TodoFooterComponent.prototype.clearCompleted = function () {
         this.todoService.deleteCompleted();

@@ -11,14 +11,11 @@ export class TodoFooterComponent implements OnInit {
 
   public allTodos;
 
-	// private activeTasks : number = this.allTodos.length;
-
   constructor(private todoService: TodoService) {
-    
   }
 
-  public getLength(){
-  	this.todoService.lengthTodos();
+  private getLength(){
+    return this.allTodos.filter(todo => !todo.completed).length;
   }
 
   private clearCompleted(){
@@ -26,7 +23,7 @@ export class TodoFooterComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.todoService.getTodos().subscribe(todos => this.allTodos = todos);
+    this.todoService.getTodos().subscribe(todos => this.allTodos = todos);
   }
 
 }
