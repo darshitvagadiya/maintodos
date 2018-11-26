@@ -48,7 +48,7 @@ module.exports = ".mat-badge-content{font-weight:600;font-size:12px;font-family:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');\n\n\nbody{\n\tfont-family: 'Source Sans Pro', sans-serif;\n\tfont-size: 20px;\n\tbackground-color: #EBEBEB;\n\tcolor: #000000;\n}\n\n\na{\n\ttext-decoration: none;\n\tcolor: #000000;\n}\n\n\nhtml, body { height: 100%; }\n\n\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n"
+module.exports = "@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');\r\n\r\n\r\nbody{\r\n\tfont-family: 'Source Sans Pro', sans-serif;\r\n\tfont-size: 20px;\r\n\tbackground-color: #EBEBEB;\r\n\tcolor: #000000;\r\n}\r\n\r\n\r\na{\r\n\ttext-decoration: none;\r\n\tcolor: #000000;\r\n}\r\n\r\n\r\nhtml, body { height: 100%; }\r\n\r\n\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n"
 
 /***/ }),
 
@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\user\Desktop\angular6\todos-app\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
-module.exports = __webpack_require__(/*! C:\Users\user\Desktop\angular6\todos-app\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! C:\Users\lenovo\Desktop\taskMain\todoLastWorking\angular-mqna2r\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
+module.exports = __webpack_require__(/*! C:\Users\lenovo\Desktop\taskMain\todoLastWorking\angular-mqna2r\src\styles.css */"./src/styles.css");
 
 
 /***/ })
