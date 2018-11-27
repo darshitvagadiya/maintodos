@@ -534,6 +534,8 @@ var TodoService = /** @class */ (function () {
         this.loadTodos();
     }
     TodoService.prototype.addTodo = function (text) {
+        var _this = this;
+        this.storageService.getTodos().subscribe(function (todos) { return _this.allTodos = todos; });
         var todos = this.allTodos;
         if (todos.length == 0) {
             this.nextId = 0;
@@ -546,7 +548,7 @@ var TodoService = /** @class */ (function () {
         todos.push(todo);
         this.storageService.setTodos(todos);
         this.nextId++;
-        this.lengthTodos();
+        this.todos.next(this.allTodos);
     };
     TodoService.prototype.loadTodos = function () {
         var _this = this;
@@ -569,13 +571,9 @@ var TodoService = /** @class */ (function () {
         this.storageService.setTodos(todos);
         this.todos.next(todos);
     };
-    TodoService.prototype.lengthTodos = function () {
-        var todos = this.allTodos;
-        var activeTodos = todos.filter(function (todo) { return !todo.completed; }).length;
-        this.todos.next(todos);
-        return activeTodos;
-    };
     TodoService.prototype.update = function (id, newValue) {
+        var _this = this;
+        this.storageService.getTodos().subscribe(function (todos) { return _this.allTodos = todos; });
         var todos = this.allTodos;
         var todoToUpdate = todos.find(function (todo) { return todo.id == id; });
         todoToUpdate.text = newValue;
@@ -583,6 +581,8 @@ var TodoService = /** @class */ (function () {
         this.todos.next(todos);
     };
     TodoService.prototype.isCompleted = function (id, completed) {
+        var _this = this;
+        this.storageService.getTodos().subscribe(function (todos) { return _this.allTodos = todos; });
         var todos = this.allTodos;
         var todoToComplete = todos.find(function (todo) { return todo.id == id; });
         todoToComplete.completed = !todoToComplete.completed;
