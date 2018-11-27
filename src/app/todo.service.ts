@@ -12,15 +12,16 @@ export class TodoService {
   @Input()
   private todo: Todo;
 
-	public allTodos: Todo[] = [];
+  public allTodos: Todo[] = [];
   private todos = new BehaviorSubject<Todo[]>(null);
-	private nextId: number; 
+  private nextId: number; 
   
   constructor(private storageService: StorageService) {
     this.loadTodos();
   }  
 
   public addTodo(text: string) : void{
+    this.storageService.getTodos().subscribe(todos => this.allTodos = todos);
     let todos = this.allTodos;
     if (todos.length == 0) { 
       this.nextId = 0;
@@ -28,11 +29,11 @@ export class TodoService {
       let maxId = todos[todos.length - 1].id;
       this.nextId = maxId + 1;
     }
-  	let todo = new Todo(this.nextId, text, false);
+    let todo = new Todo(this.nextId, text, false);
     todos.push(todo);
     this.storageService.setTodos(todos);
-  	this.nextId++;
-    this.lengthTodos();
+    this.nextId++;
+    this.todos.next(this.allTodos);
   }
 
   public loadTodos (){
@@ -59,14 +60,8 @@ export class TodoService {
     this.todos.next(todos);
   }
 
-  public lengthTodos(){
-    let todos = this.allTodos;
-    let activeTodos = todos.filter((todo) => !todo.completed).length;
-    this.todos.next(todos);
-    return activeTodos;
-  }
-
   public update(id, newValue){
+    this.storageService.getTodos().subscribe(todos => this.allTodos = todos);
     let todos = this.allTodos;
     let todoToUpdate = todos.find((todo) => todo.id == id);
     todoToUpdate.text = newValue;
@@ -75,6 +70,7 @@ export class TodoService {
   } 
 
   public isCompleted(id: number, completed: boolean){
+    this.storageService.getTodos().subscribe(todos => this.allTodos = todos);
     let todos = this.allTodos;
     let todoToComplete = todos.find((todo) => todo.id == id);
     todoToComplete.completed = !todoToComplete.completed;
