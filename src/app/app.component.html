@@ -1,11 +1,1 @@
-<div class="container">
-  <div class="todo-wrapper">
-    <app-todo-input></app-todo-input>
-    <div *ngFor="let todo of allTodos">
-    	<app-todo-item [todo]="todo"></app-todo-item>
-    </div>
-    <div>
-    <app-todo-footer [style.display]="allTodos.length <= 0 ? 'none': 'inline'"></app-todo-footer>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>

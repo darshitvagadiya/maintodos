@@ -1,15 +1,15 @@
 <footer class="footer">
 	<span class="todo-count"><strong>{{getLength()}}</strong> item left</span>
-	<!-- <ul class="filters">
+	<ul class="filters">
 		<li>
-			<a [routerLink]="['/all']" [class.selected]="path === 'all'">All</a>
+			<a [routerLink]="['/all']">All</a>
 		</li>
 		<li>
-			<a  [routerLink]="['/active']" [class.selected]="path === 'active'">Active</a>
+			<a [routerLink]="['/active']">Active</a>
 		</li>
 		<li>
-			<a [routerLink]="['/completed']" [class.selected]="path === 'completed'">Completed</a>
+			<a [routerLink]="['/completed']">Completed</a> 
 		</li>
-	</ul> -->
+	</ul>
 	<button class="clear-completed" (click)="clearCompleted()">Clear completed</button> 
 </footer>

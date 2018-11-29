@@ -11,13 +11,15 @@ import { StorageService } from './storage.service';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponentComponent } from './home-component/home-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoInputComponent,
     TodoItemComponent,
-    TodoFooterComponent
+    TodoFooterComponent,
+    HomeComponentComponent
   ],
   imports: [
     BrowserModule,

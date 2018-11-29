@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Todo } from '../todo';
 import { TodoService } from '../todo.service';
 import { StorageService } from '../storage.service';
@@ -17,8 +18,9 @@ export class TodoItemComponent implements OnInit {
 
   public allTodos;
 
+
   constructor(private todoService: TodoService, private storageService: StorageService){
-    this.todoService.getTodos().subscribe(todos => this.allTodos = todos);
+    // this.todoService.getTodos().subscribe(todos => this.allTodos = todos);
   };
 
   ngOnInit() {

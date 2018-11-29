@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TodoService } from '../todo.service';
 import { Todo } from '../todo';
 
@@ -8,10 +9,14 @@ import { Todo } from '../todo';
   styleUrls: ['./todo-footer.component.css']
 })
 export class TodoFooterComponent implements OnInit {
+  
+  @Input()
+  private allTodos
 
-  public allTodos;
+  
+  private path;
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService, private route: ActivatedRoute) {
   }
 
   private getLength(){
@@ -22,8 +27,7 @@ export class TodoFooterComponent implements OnInit {
     this.todoService.deleteCompleted(); 
   }
 
-  ngOnInit() {
-    this.todoService.getTodos().subscribe(todos => this.allTodos = todos);
-  }
+  ngOnInit() {}
+  
 
 }

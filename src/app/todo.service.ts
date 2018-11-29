@@ -1,7 +1,7 @@
 import { Injectable, Input } from '@angular/core';
 import { StorageService } from './storage.service';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-
+import { Observable, of, BehaviorSubject, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Todo } from './todo';
 
 @Injectable({
@@ -12,9 +12,11 @@ export class TodoService {
   @Input()
   private todo: Todo;
 
-  public allTodos: Todo[] = [];
+	public allTodos: Todo[] = [];
+
   private todos = new BehaviorSubject<Todo[]>(null);
-  private nextId: number; 
+  public todos$: Observable<Todo[]> = this.todos.asObservable();
+	private nextId: number; 
   
   constructor(private storageService: StorageService) {
     this.loadTodos();
@@ -29,10 +31,10 @@ export class TodoService {
       let maxId = todos[todos.length - 1].id;
       this.nextId = maxId + 1;
     }
-    let todo = new Todo(this.nextId, text, false);
+  	let todo = new Todo(this.nextId, text, false);
     todos.push(todo);
     this.storageService.setTodos(todos);
-    this.nextId++;
+  	this.nextId++;
     this.todos.next(this.allTodos);
   }
 
@@ -41,8 +43,17 @@ export class TodoService {
     this.todos.next(this.allTodos);
   }
 
-  public getTodos(): Observable<Todo[]>{
-    return this.todos.asObservable();
+  public getTodos(query): Observable<Todo[]>{
+    if(query === 'completed' || query === 'active'){
+      const isCompleted = query === 'completed';
+      let todos = this.allTodos.filter(todo => todo.completed === isCompleted);
+      this.todos.next(todos);
+      return this.todos.asObservable();
+    }else{
+      let todos = this.allTodos;
+      this.todos.next(todos);
+      return this.todos.asObservable();
+    }  
   }
 
   public removeTodo(selectedTodo): void{
