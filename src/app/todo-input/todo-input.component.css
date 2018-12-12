@@ -14,6 +14,27 @@ input::placeholder{
 	opacity: 0.3;
 }
 
+textarea::placeholder{
+	opacity: 0.3;
+	font-size: 25px;
+}
+
+.textarea{
+	border: none;
+	outline: none;
+	resize: none;
+	font-size: 25px;
+}
+
 #todo-input:focus{
 	font-size: 25px;
+}
+
+.todo-input{
+	min-height: 35px;
+	outline: none;
+	border: none;
+	font-size: 25px;
+	opacity: 0.8;
+	width: 100%;
 }

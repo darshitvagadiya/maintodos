@@ -27,7 +27,8 @@ export class TodoFooterComponent implements OnInit {
     this.todoService.deleteCompleted(); 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
   
 
 }

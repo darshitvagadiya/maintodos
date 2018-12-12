@@ -1,8 +1,10 @@
 .todoWrapper{
 	padding: 15px 25px;
-	font-size: 25px;
-	opacity: 0.7;
-	border-top: 1px solid #ECECEC;
+	font-size: 16px;
+	border: 1px solid grey;
+	margin-bottom: 5px;
+	z-index: 1;
+	margin: 0 auto;
 }
 
 .todoInput{
@@ -17,16 +19,82 @@
 	display: none;
 	float: right;
 	font-size: 20px;
-	margin-top: 13px;
 	opacity: 0.8;
 }
 
 .todoWrapper:hover .removeTodo{
 	display: inline-block;
 }
-
-
 .completed{
 	opacity: 0.4;
 	text-decoration: line-through;
 }
+
+.hidden{
+	display: none;
+}
+
+.description{
+	white-space: pre-wrap;
+}
+
+.time{
+	font-size: 80%;
+}
+
+.updateTitle{
+	border: none;
+	border-bottom: 1px solid grey;
+	padding: 15px 25px;
+	width: 80%;
+	font-size: 25px;
+	outline: none;
+}
+
+.updateDesc{
+	border: none;
+	border-bottom: 1px solid grey;
+	outline: none;
+	font-size: 14px;
+	resize: none;
+	padding: 15px 25px;
+	width: 80%;
+}
+
+.modal {
+	position: fixed;
+	background-color: rgb(0,0,0,0);
+	background-color: rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	padding-top: 100px;
+}
+
+.modal-content {
+	text-align: center;
+	background-color: #ccb9b9;
+	width: 30%;
+	margin: auto;
+	padding: 20px;
+}
+
+.btn{
+	border: none;
+	padding: 10px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn-primary{
+	background-color: #148BE0;
+	margin-right: 5px;
+}
+
+.btn-danger{
+	background-color: #F25A4A;
+}
+

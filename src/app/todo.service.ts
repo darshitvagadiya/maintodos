@@ -17,12 +17,13 @@ export class TodoService {
   private todos = new BehaviorSubject<Todo[]>(null);
   public todos$: Observable<Todo[]> = this.todos.asObservable();
 	private nextId: number; 
+  public editedAt: Date;
   
   constructor(private storageService: StorageService) {
     this.loadTodos();
   }  
 
-  public addTodo(text: string) : void{
+  public addTodo(text: string, description: string) : void{
     this.storageService.getTodos().subscribe(todos => this.allTodos = todos);
     let todos = this.allTodos;
     if (todos.length == 0) { 
@@ -31,7 +32,7 @@ export class TodoService {
       let maxId = todos[todos.length - 1].id;
       this.nextId = maxId + 1;
     }
-  	let todo = new Todo(this.nextId, text, false);
+  	let todo = new Todo(this.nextId, text, description, false, new Date(), this.editedAt);
     todos.push(todo);
     this.storageService.setTodos(todos);
   	this.nextId++;
@@ -71,11 +72,13 @@ export class TodoService {
     this.todos.next(todos);
   }
 
-  public update(id, newValue){
+  public update(id, newValue, newDesc){
     this.storageService.getTodos().subscribe(todos => this.allTodos = todos);
     let todos = this.allTodos;
     let todoToUpdate = todos.find((todo) => todo.id == id);
     todoToUpdate.text = newValue;
+    todoToUpdate.description = newDesc;
+    todoToUpdate.edited_at = new Date();
     this.storageService.setTodos(todos);
     this.todos.next(todos);
   } 

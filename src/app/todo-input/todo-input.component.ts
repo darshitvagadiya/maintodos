@@ -9,6 +9,7 @@ import { TodoService } from '../todo.service';
 export class TodoInputComponent implements OnInit {
 
 	private todoText: string;
+  private todoDesc: string;
 
 
   constructor(private todoService: TodoService) { }
@@ -18,7 +19,8 @@ export class TodoInputComponent implements OnInit {
   }
 
   private addTodo(){
-    this.todoService.addTodo(this.todoText);
+    this.todoService.addTodo(this.todoText, this.todoDesc);
     this.todoText = '';
+    this.todoDesc = '';
   }
 }
