@@ -757,11 +757,13 @@ var TodoService = /** @class */ (function () {
         this.todos.next(todos);
     };
     TodoService.prototype.deleteCompleted = function () {
+        var _this = this;
         var todos = this.allTodos;
         var completedTodos = todos.filter(function (todo) { return todo.completed !== true; });
         todos = completedTodos;
         this.storageService.setTodos(todos);
         this.todos.next(todos);
+        this.storageService.getTodos().subscribe(function (todos) { return _this.allTodos = todos; });
     };
     TodoService.prototype.update = function (id, newValue, newDesc) {
         var _this = this;

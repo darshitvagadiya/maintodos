@@ -70,6 +70,7 @@ export class TodoService {
     todos = completedTodos;
     this.storageService.setTodos(todos);
     this.todos.next(todos);
+	this.storageService.getTodos().subscribe(todos => this.allTodos = todos);
   }
 
   public update(id, newValue, newDesc){
