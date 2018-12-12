@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\lenovo\Desktop\taskMain\todoLastWorking\angular6-task\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
-module.exports = __webpack_require__(/*! C:\Users\lenovo\Desktop\taskMain\todoLastWorking\angular6-task\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! C:\Users\lenovo\Desktop\taskMain\todoLastWorking\angular-mqna2r\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
+module.exports = __webpack_require__(/*! C:\Users\lenovo\Desktop\taskMain\todoLastWorking\angular-mqna2r\src\styles.css */"./src/styles.css");
 
 
 /***/ })
