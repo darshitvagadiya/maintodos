@@ -3,8 +3,8 @@
 		<input id="todo-input" name="todo-input" type="text" [(ngModel)]="todoText" value="{{todoText}}" placeholder="Title">
 		<br>
 		<br>
-		<input type="text" name="todo-desc" class="todo-input" [(ngModel)]="todoDesc" value="{{todoDesc}}" placeholder="Enter Description" max="100">
-		<!-- <textarea placeholder="Enter Description" name="todo-desc description" class="todo-input" [(ngModel)]="todoDesc" maxlength="100"></textarea> -->
+		<!-- <input type="text" name="todo-desc" class="todo-input" [(ngModel)]="todoDesc" value="{{todoDesc}}" placeholder="Enter Description" max="100"> -->
+		<textarea placeholder="Enter Description" name="todo-desc" class="todo-input description" [(ngModel)]="todoDesc" maxlength="100"></textarea>
 		<input type="submit" style="display: none;">
 	</form>
 </div>
