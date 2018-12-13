@@ -76,9 +76,21 @@
 .modal-content {
 	text-align: center;
 	background-color: #ccb9b9;
-	width: 30%;
+	width: 40%;
 	margin: auto;
 	padding: 20px;
+}
+
+@media screen and (max-width: 480px) {
+	.modal-content{
+		width: 35%;
+	} 
+}
+
+@media screen and (max-width: 1024px) {
+	.modal-content{
+		margin-left: 120px;
+	}
 }
 
 .btn{
@@ -97,4 +109,6 @@
 .btn-danger{
 	background-color: #F25A4A;
 }
+
+
 

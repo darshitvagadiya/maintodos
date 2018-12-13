@@ -3,3 +3,12 @@
 	width: 600px;
 	background-color: #fff;
 }
+
+@media screen and (max-width: 480px) {
+	.container{
+		max-width: 400px;
+	} 
+	app-todo-item{
+		max-width: 400px;
+	}
+}
