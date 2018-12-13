@@ -48,7 +48,7 @@ module.exports = ".mat-badge-content{font-weight:600;font-size:12px;font-family:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');\r\n\r\n\r\nbody{\r\n\tfont-family: 'Source Sans Pro', sans-serif;\r\n\tfont-size: 20px;\r\n\tbackground-color: #EBEBEB;\r\n\tcolor: #000000;\r\n}\r\n\r\n\r\na{\r\n\ttext-decoration: none;\r\n\tcolor: #000000;\r\n}\r\n\r\n\r\nhtml, body { height: 100%; }\r\n\r\n\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n"
+module.exports = "@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');\r\n\r\n\r\nbody{\r\n\tfont-family: 'Source Sans Pro', sans-serif;\r\n\tfont-size: 20px;\r\n\tbackground-color: #EBEBEB;\r\n\tcolor: #000000;\r\n\tbox-sizing: border-box;\r\n}\r\n\r\n\r\na{\r\n\ttext-decoration: none;\r\n\tcolor: #000000;\r\n}\r\n\r\n\r\n@media screen and (max-width: 480px) {\r\n\tbody{\r\n\t\tmax-width: 380px;\r\n\t} \r\n}\r\n"
 
 /***/ }),
 
