@@ -12,3 +12,24 @@
 		max-width: 400px;
 	}
 }
+
+.sorting{
+	padding-left: 20px;
+}
+
+.btn{
+	border: none;
+	padding: 10px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn-primary{
+	background-color: #148BE0;
+	margin-right: 5px;
+}
+
+.btn-danger{
+	background-color: #F25A4A;
+}

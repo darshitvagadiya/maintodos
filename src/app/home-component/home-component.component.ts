@@ -16,6 +16,18 @@ export class HomeComponentComponent implements OnInit {
   constructor(private todoService: TodoService, private route: ActivatedRoute, private storageService: StorageService){
   }
 
+  private sortByTitle(){
+    return this.todoService.titleSort();
+  }
+
+  private sortByDate(){
+    return this.todoService.dateSort();
+  }
+
+  private sortByDescription(){
+    return this.todoService.descriptionSort();
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.path = params.status;
@@ -23,5 +35,4 @@ export class HomeComponentComponent implements OnInit {
       .subscribe(todos => this.allTodos = todos);
     })
   }
-
 }

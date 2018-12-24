@@ -219,7 +219,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".todo-wrapper{\r\n\tmargin: 20px auto;\r\n\twidth: 600px;\r\n\tbackground-color: #fff;\r\n}\r\n\r\n@media screen and (max-width: 480px) {\r\n\t.container{\r\n\t\tmax-width: 400px;\r\n\t} \r\n\tapp-todo-item{\r\n\t\tmax-width: 400px;\r\n\t}\r\n}"
+module.exports = ".todo-wrapper{\r\n\tmargin: 20px auto;\r\n\twidth: 600px;\r\n\tbackground-color: #fff;\r\n}\r\n\r\n@media screen and (max-width: 480px) {\r\n\t.container{\r\n\t\tmax-width: 400px;\r\n\t} \r\n\tapp-todo-item{\r\n\t\tmax-width: 400px;\r\n\t}\r\n}\r\n\r\n.sorting{\r\n\tpadding-left: 20px;\r\n}\r\n\r\n.btn{\r\n\tborder: none;\r\n\tpadding: 10px;\r\n\tcolor: #fff;\r\n\tborder-radius: 5px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.btn-primary{\r\n\tbackground-color: #148BE0;\r\n\tmargin-right: 5px;\r\n}\r\n\r\n.btn-danger{\r\n\tbackground-color: #F25A4A;\r\n}"
 
 /***/ }),
 
@@ -230,7 +230,7 @@ module.exports = ".todo-wrapper{\r\n\tmargin: 20px auto;\r\n\twidth: 600px;\r\n\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"todo-wrapper\">\r\n    <app-todo-input></app-todo-input>\r\n    <div *ngFor=\"let todo of allTodos | orderby\">\r\n    \t<app-todo-item [todo]=\"todo\"></app-todo-item>\r\n    </div>\r\n    <app-todo-footer [allTodos]=\"allTodos\"></app-todo-footer>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div class=\"todo-wrapper\">\r\n    <app-todo-input></app-todo-input>\r\n    <p class=\"sorting\">\r\n    \tSort By:\r\n    \t<button class=\"btn btn-primary\" (click)=\"sortByDate()\">Date</button>\r\n    \t<button class=\"btn btn-primary\" (click)=\"sortByTitle()\">Title</button>\r\n    \t<button class=\"btn btn-primary\" (click)=\"sortByDescription()\">Description</button>\r\n    </p>\r\n    <div *ngFor=\"let todo of allTodos | orderby\">\r\n    \t<app-todo-item [todo]=\"todo\"></app-todo-item>\r\n    </div>\r\n    <app-todo-footer [allTodos]=\"allTodos\"></app-todo-footer>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -268,6 +268,15 @@ var HomeComponentComponent = /** @class */ (function () {
         this.storageService = storageService;
         this.allTodos = [];
     }
+    HomeComponentComponent.prototype.sortByTitle = function () {
+        return this.todoService.titleSort();
+    };
+    HomeComponentComponent.prototype.sortByDate = function () {
+        return this.todoService.dateSort();
+    };
+    HomeComponentComponent.prototype.sortByDescription = function () {
+        return this.todoService.descriptionSort();
+    };
     HomeComponentComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
@@ -316,6 +325,14 @@ var OrderbyPipe = /** @class */ (function () {
         return array.sort(function (a, b) {
             return new Date(a.edited_at || a.created_at).getTime() - new Date(b.edited_at || b.created_at).getTime();
         }).reverse();
+        //to sort by title
+        // return array.sort((a, b) => {
+        // 	return a.text.localeCompare(b.text);
+        // })
+        //to sort by description
+        // return array.sort((a, b) => {
+        // 	return a.description.localeCompare(b.description);
+        // })
     };
     OrderbyPipe = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
@@ -532,7 +549,7 @@ module.exports = ".todo-input-wrapper{\r\n\tpadding: 25px; \r\n}\r\n\r\n#todo-in
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <div class=\"todo-input-wrapper\">\r\n\t<form  (ngSubmit)=\"addTodo()\">\r\n\t\t<input id=\"todo-input\" name=\"todo-input\" type=\"text\" [(ngModel)]=\"todoText\" value=\"{{todoText}}\" placeholder=\"Title\">\r\n\t\t<br>\r\n\t\t<br>\r\n\t\t<!-- <input type=\"text\" name=\"todo-desc\" class=\"todo-input\" [(ngModel)]=\"todoDesc\" value=\"{{todoDesc}}\" placeholder=\"Enter Description\" max=\"100\"> -->\r\n\t\t<textarea placeholder=\"Enter Description\" name=\"todo-desc\" class=\"todo-input description\" [(ngModel)]=\"todoDesc\" maxlength=\"100\"></textarea>\r\n\t\t<button class=\"btn btn-submit\" type=\"button\" (click)=\"addTodo()\" [disabled]=\"!todoText || !todoDesc\">Add Todo</button>\r\n\t</form>\r\n</div>"
+module.exports = " <div class=\"todo-input-wrapper\">\r\n\t<form  (ngSubmit)=\"addTodo()\">\r\n\t\t<input id=\"todo-input\" name=\"todo-input\" type=\"text\" [(ngModel)]=\"todoText\" value=\"{{todoText}}\" placeholder=\"Title\">\r\n\t\t<br>\r\n\t\t<br>\r\n\t\t<!-- <input type=\"text\" name=\"todo-desc\" class=\"todo-input\" [(ngModel)]=\"todoDesc\" value=\"{{todoDesc}}\" placeholder=\"Enter Description\" max=\"100\"> -->\r\n\t\t<textarea placeholder=\"Enter Description\" name=\"todo-desc\" class=\"todo-input description\" [(ngModel)]=\"todoDesc\" maxlength=\"100\"></textarea>\r\n\t\t<button class=\"btn btn-submit\" type=\"button\" (click)=\"addTodo()\" [disabled]=\"!todoText || !todoDesc\">Add Todo</button>\r\n\t\t\r\n\t</form>\r\n</div>"
 
 /***/ }),
 
@@ -749,6 +766,21 @@ var TodoService = /** @class */ (function () {
             this.todos.next(todos);
             return this.todos.asObservable();
         }
+    };
+    TodoService.prototype.titleSort = function () {
+        return this.allTodos.sort(function (a, b) {
+            return a.text.localeCompare(b.text);
+        });
+    };
+    TodoService.prototype.dateSort = function () {
+        return this.allTodos.sort(function (a, b) {
+            return new Date(a.edited_at || a.created_at).getTime() - new Date(b.edited_at || b.created_at).getTime();
+        }).reverse();
+    };
+    TodoService.prototype.descriptionSort = function () {
+        return this.allTodos.sort(function (a, b) {
+            return a.description.localeCompare(b.description);
+        });
     };
     TodoService.prototype.removeTodo = function (selectedTodo) {
         var todos = this.allTodos;

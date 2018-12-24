@@ -57,6 +57,23 @@ export class TodoService {
     }  
   }
 
+  public titleSort(){
+    return this.allTodos.sort((a, b) => {
+      return a.text.localeCompare(b.text);
+    })
+  }
+
+  public dateSort(){
+    return this.allTodos.sort((a, b) => {
+      return new Date(a.edited_at || a.created_at).getTime() - new Date(b.edited_at || b.created_at).getTime()}).reverse();
+  }
+
+  public descriptionSort(){
+    return this.allTodos.sort((a, b) => {
+      return a.description.localeCompare(b.description);
+    })
+  }
+
   public removeTodo(selectedTodo): void{
     let todos = this.allTodos;
     todos.splice(todos.findIndex((todo) => todo.id == selectedTodo), 1);
